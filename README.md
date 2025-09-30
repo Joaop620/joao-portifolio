@@ -1,4 +1,4 @@
-Portfólio pessoal do João Ferreira, focado em front-end com React + TypeScript, estilizado com Tailwind CSS, animações com Framer Motion e suporte a PT/EN via i18next. Inclui seções de projetos, experiência, serviços, habilidades, contato (Formspree) e tema dark/light.
+Meu projeto pessoal, focado em front-end com React + TypeScript, estilizado com Tailwind CSS, animações com Framer Motion e suporte a PT/EN via i18next. Inclui seções de projetos, experiência, serviços, habilidades, contato (Formspree) e tema dark/light.
 
 ✨ Recursos
 
@@ -17,8 +17,6 @@ Portfólio pessoal do João Ferreira, focado em front-end com React + TypeScript
 📨 Contato — integração opcional com Formspree
 
 📱 Responsivo — mobile-first
-
-🚀 Deploy — pronto para Vercel
 
 🖥️ Demo
 
