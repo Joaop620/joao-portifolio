@@ -21,11 +21,11 @@ export default function App(){
   const toggleLang = () => i18n.changeLanguage(i18n.language === 'pt' ? 'en' : 'pt')
   const isPT = i18n.language === 'pt'
 
-  // Scroll progress
+  
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 })
 
-  // Global reveal for .reveal and .reveal-stagger
+  
   useEffect(()=>{
     const revealEls = Array.from(document.querySelectorAll<HTMLElement>('.reveal, .reveal-stagger'))
     const io = new IntersectionObserver((ents)=>{
