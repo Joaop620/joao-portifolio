@@ -53,7 +53,7 @@ export default function Hero(){
             <a className="btn" href="mailto:joaop620@gmail.com">{t('hero.email')}</a>
             <a className="btn" target="_blank" href="https://www.linkedin.com/in/jo%C3%A3ocresferreira/">{t('hero.linkedin')}</a>
             <a className="btn" target="_blank" href="https://github.com/Joaop620">{t('hero.github')}</a>
-            <a className="btn btn-cv" target="_blank" download href="cv/joao-ferreira-cv.pdf">{t('hero.cv')}</a>
+            <a className="btn btn-cv" target="_blank" download href="/cv/joao-ferreira-cv.pdf">{t('hero.cv')}</a>
           </nav>
         </motion.div>
       </div>
