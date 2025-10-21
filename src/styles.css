@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --gold:#FFD700; --gold2:#ffbf00;
+  --goldA02: rgba(255,215,0,.02);
+  --goldA04: rgba(255,215,0,.04);
+  --goldA06: rgba(255,215,0,.06);
+}
+/* global */
+*{scroll-behavior:smooth}
+.container-max{ @apply max-w-[1250px] mx-auto px-6; }
+.btn{ @apply inline-block rounded-xl border border-current px-4 py-2 font-bold transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-gold; }
+.btn-cv{ @apply text-black border-0 bg-gradient-to-r from-gold to-gold2 shadow-gold; }
+.section-title{ @apply text-center text-3xl md:text-4xl font-extrabold; }
+.section-sub{ @apply text-center max-w-2xl mx-auto opacity-90 mt-2; }
+
+/* reveal animations */
+.reveal{opacity:0; transform: translateY(22px) scale(.98); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1);}
+.reveal.visible{opacity:1; transform:none;}
+.reveal-stagger > *{opacity:0; transform: translateY(16px);}
+.reveal-stagger.visible > *{animation: stg .8s cubic-bezier(.2,.7,.2,1) both;}
+.reveal-stagger.visible > *:nth-child(1){animation-delay:.05s}
+.reveal-stagger.visible > *:nth-child(2){animation-delay:.12s}
+.reveal-stagger.visible > *:nth-child(3){animation-delay:.19s}
+.reveal-stagger.visible > *:nth-child(4){animation-delay:.26s}
+.reveal-stagger.visible > *:nth-child(5){animation-delay:.33s}
+.reveal-stagger.visible > *:nth-child(6){animation-delay:.40s}
+@keyframes stg{from{opacity:0; transform: translateY(16px) scale(.98)}to{opacity:1; transform:none}}
+
+/* bars */
+.skill-bar{ @apply h-3 w-0 rounded bg-gradient-to-r from-gold to-gold2 transition-all duration-1000; }
+
+/* cards */
+.card{ @apply rounded-2xl border border-current bg-[rgba(255,215,0,.06)] p-5 transition-transform duration-300 hover:-translate-y-1 hover:shadow-gold; }
+.card h3{ @apply font-bold text-lg mb-1 break-words; }
+.card p{ @apply break-words; }
+
+/* band backgrounds */
+.band-dark{ background: linear-gradient(180deg, rgba(255,215,0,.02), rgba(255,215,0,0)); }
+.band-darker{ background: linear-gradient(180deg, rgba(255,215,0,.03), rgba(255,215,0,0)); }
+
+/* progress bar */
+#progress{ @apply fixed top-0 left-0 h-1 w-0 z-40 bg-gradient-to-r from-gold to-gold2; }
+
+/* decorative gold underline for section titles */
+.section-title{ position: relative; }
+.section-title::after{
+  content: ""; display:block; width: 84px; height: 3px; margin: 10px auto 0;
+  background: linear-gradient(90deg, var(--gold), var(--gold2)); border-radius: 9999px;
+}
+
+/* grid background */
+.grid-bg{
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    repeating-linear-gradient(to right, var(--goldA04) 0 1px, transparent 1px 120px),
+    repeating-linear-gradient(to bottom, var(--goldA04) 0 1px, transparent 1px 120px);
+  -webkit-mask: radial-gradient(ellipse at 50% -10%, rgba(0,0,0,.66), rgba(0,0,0,1) 60%);
+          mask: radial-gradient(ellipse at 50% -10%, rgba(0,0,0,.66), rgba(0,0,0,1) 60%);
+}
+.light .grid-bg{
+  background-image:
+    repeating-linear-gradient(to right, rgba(0,0,0,.06) 0 1px, transparent 1px 120px),
+    repeating-linear-gradient(to bottom, rgba(0,0,0,.06) 0 1px, transparent 1px 120px);
+  -webkit-mask: radial-gradient(ellipse at 50% -10%, rgba(0,0,0,.2), rgba(0,0,0,.9) 60%);
+          mask: radial-gradient(ellipse at 50% -10%, rgba(0,0,0,.2), rgba(0,0,0,.9) 60%);
+}
+
+
+#lottie-container{ @apply rounded-3xl border border-current shadow-gold; }
+
+
+/* hover tilt */
+.card{ transform: translateZ(0); }
+.card:hover{ transform: translateY(-4px) rotateX(.6deg) rotateY(-.6deg); }

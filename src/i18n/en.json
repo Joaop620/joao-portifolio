@@ -1,0 +1,208 @@
+{
+  "title": "João Ferreira - Portfolio",
+  "hero": {
+    "name": "João Ferreira",
+    "role": "Front-end Developer | React | JavaScript",
+    "sub": "Front‑end focused on fast, accessible and beautiful experiences.",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "cv": "Download CV"
+  },
+  "services": {
+    "title": "Services",
+    "sub": "From prototype to deploy — modern solutions for digital business.",
+    "items": [
+      {
+        "t": "Ultra‑fast Landing Pages",
+        "d": "A+ performance, technical SEO and conversion optimized."
+      },
+      {
+        "t": "React SPAs",
+        "d": "Component architecture, predictable state and routing."
+      },
+      {
+        "t": "Design System & UI Kit",
+        "d": "Reusable and consistent components."
+      },
+      {
+        "t": "REST/JSON Integrations",
+        "d": "APIs with fetch/Axios, error handling and caching."
+      },
+      {
+        "t": "Responsiveness & Accessibility",
+        "d": "Fluid layouts and WAI‑ARIA best practices."
+      },
+      {
+        "t": "Build Optimization",
+        "d": "Lazy‑loading, code‑splitting and lightweight bundles."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Work Experience",
+    "items": [
+      {
+        "c": "BorgWarner",
+        "p": "2022 – Present",
+        "b": [
+          "Automation of routines and internal UI improvements.",
+          "Dashboards and indicators for logistics flow.",
+          "Version control best practices (Git)."
+        ]
+      },
+      {
+        "c": "Coca‑Cola",
+        "p": "2020 – 2022",
+        "b": [
+          "Data‑driven administrative support.",
+          "Process documentation and standardization.",
+          "Collaboration with cross‑functional teams."
+        ]
+      },
+      {
+        "c": "R & M Madeiras",
+        "p": "2019 – 2020",
+        "b": [
+          "Administrative routines and reporting.",
+          "Customer contact and KPI tracking.",
+          "Continuous workflow improvements."
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "sub": "Fictional work that represents my style and stack.",
+    "items": [
+      {
+        "t": "Family Org Chart",
+        "d": "Org chart focused on usability.",
+        "tags": [
+          "React",
+          "GSAP",
+          "SCSS"
+        ]
+      },
+      {
+        "t": "Lua Portfolio",
+        "d": "Portfolio website with light/dark themes.",
+        "tags": [
+          "Vite",
+          "Chart.js",
+          "REST"
+        ]
+      },
+      {
+        "t": "To-Do List",
+        "d": "To-do list with filters and drag-and-drop.",
+        "tags": [
+          "React",
+          "Redux",
+          "Stripe UI"
+        ]
+      },
+      {
+        "t": "Casa do Pão",
+        "d": "NE-commerce site for a local bakery.",
+        "tags": [
+          "JS",
+          "LocalStorage",
+          "IndexedDB"
+        ]
+      },
+      {
+        "t": "FitMeals",
+        "d": "Responsive meal planner.",
+        "tags": [
+          "React",
+          "Router",
+          "ARIA"
+        ]
+      },
+      {
+        "t": "Evently",
+        "d": "Event landing with CTA and schedule.",
+        "tags": [
+          "HTML",
+          "CSS",
+          "Anim"
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "bars": [
+      {
+        "t": "ReactJS",
+        "v": 85
+      },
+      {
+        "t": "JavaScript",
+        "v": 90
+      },
+      {
+        "t": "HTML5 & CSS3",
+        "v": 95
+      },
+      {
+        "t": "TypeScript",
+        "v": 75
+      },
+      {
+        "t": "Git/GitHub",
+        "v": 80
+      },
+      {
+        "t": "NodeJS",
+        "v": 70
+      }
+    ],
+    "tools": [
+      "Vite",
+      "Webpack",
+      "Figma",
+      "SASS",
+      "Styled‑Components",
+      "Tailwind",
+      "Axios",
+      "ESLint/Prettier"
+    ],
+    "list": [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Vite",
+      "Webpack",
+      "Node.js",
+      "Express",
+      "Tailwind CSS",
+      "Sass",
+      "Styled-Components",
+      "Git",
+      "GitHub",
+      "Axios",
+      "ESLint",
+      "Prettier",
+      "Framer Motion",
+      "React Hook Form",
+      "i18next",
+      "Zod",
+      "Figma"
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "sub": "Let’s build something great together! Get in touch.",
+    "name": "Your name",
+    "email": "Your email",
+    "message": "Your message",
+    "send": "Send",
+    "note": "* This form uses Formspree. Replace the ID and it's ready."
+  },
+  "footer": "© 2025 João Ferreira"
+}

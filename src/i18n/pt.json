@@ -1,0 +1,216 @@
+{
+  "title": "João Ferreira - Portfólio",
+  "hero": {
+    "name": "João Ferreira",
+    "role": "Front-end Developer | React | JavaScript",
+    "sub": "Front‑end focado em experiências rápidas, acessíveis e bonitas.",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "cv": "Baixar CV"
+  },
+  "services": {
+    "title": "Serviços",
+    "sub": "Do protótipo ao deploy — soluções modernas para negócios digitais.",
+    "items": [
+      {
+        "t": "Landing Pages Ultra‑rápidas",
+        "d": "Performance A+, SEO técnico e conversão otimizada."
+      },
+      {
+        "t": "SPAs com React",
+        "d": "Arquitetura de componentes, estados previsíveis e roteamento."
+      },
+      {
+        "t": "Design System & UI Kit",
+        "d": "Componentes reutilizáveis e consistentes."
+      },
+      {
+        "t": "Integrações REST/JSON",
+        "d": "APIs com fetch/Axios, tratamento de erros e cache."
+      },
+      {
+        "t": "Responsividade & Acessibilidade",
+        "d": "Layouts fluidos e boas práticas WAI‑ARIA."
+      },
+      {
+        "t": "Otimização de Build",
+        "d": "Lazy‑loading, code‑splitting e bundles leves."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Experiência Profissional",
+    "items": [
+      {
+        "c": "BorgWarner",
+        "p": "2022 – Atual",
+        "b": [
+          "Automação de rotinas e melhoria de UI interna.",
+          "Criação de painéis e indicadores para fluxo logístico.",
+          "Boas práticas de versionamento (Git)."
+        ]
+      },
+      {
+        "c": "Coca‑Cola",
+        "p": "2020 – 2022",
+        "b": [
+          "Suporte administrativo orientado a dados.",
+          "Documentação e padronização de processos.",
+          "Trabalho com times multidisciplinares."
+        ]
+      },
+      {
+        "c": "R & M Madeiras",
+        "p": "2019 – 2020",
+        "b": [
+          "Rotinas administrativas e relatórios.",
+          "Atendimento a clientes e acompanhamento de KPIs.",
+          "Melhorias no fluxo de trabalho."
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Projetos",
+    "sub": "Trabalhos fictícios que representam meu estilo e stack.",
+    "items": [
+      {
+        "t": "Organograma Familiar",
+        "d": "Organograma com foco em usabilidade.",
+        "tags": [
+          "React",
+          "GSAP",
+          "SCSS"
+        ],
+        "demo": "https://organo-familiar.vercel.app/",
+        "code": "https://github.com/Joaop620/OrganoFamiliar"
+      },
+      {
+        "t": "Lua Portifólio",
+        "d": "Site portifólio com temas claro/escuro.",
+        "tags": [
+          "Vite",
+          "TypeScript",
+          "React"
+        ],
+        "demo": "https://lua-design-portfolio.vercel.app/",
+        "code": "https://github.com/Joaop620/lua-design-portfolio"
+      },
+      {
+        "t": "To-Do List",
+        "d": "To-do list com filtros e drag-and-drop.",
+        "tags": [
+          "React",
+          "Redux",
+          "Stripe UI"
+        ],
+        "demo": "https://to-do-list-joao.vercel.app/",
+        "code": "https://github.com/Joaop620/To-Do-List"
+      },
+      {
+        "t": "Casa do pão",
+        "d": "Site de compras para padaria local.",
+        "tags": [
+          "JS",
+          "LocalStorage",
+          "IndexedDB"
+        ],
+        "demo": "https://organo-familiar.vercel.app/",
+        "code": "https://github.com/Joaop620/OrganoFamiliar"
+      },
+      {
+        "t": "FitMeals",
+        "d": "Planner de refeições responsivo.",
+        "tags": [
+          "React",
+          "Router",
+          "ARIA"
+        ]
+      },
+      {
+        "t": "Evently",
+        "d": "Landing para eventos com CTA e agenda.",
+        "tags": [
+          "HTML",
+          "CSS",
+          "Anim"
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Habilidades Técnicas",
+    "bars": [
+      {
+        "t": "ReactJS",
+        "v": 85
+      },
+      {
+        "t": "JavaScript",
+        "v": 90
+      },
+      {
+        "t": "HTML5 & CSS3",
+        "v": 95
+      },
+      {
+        "t": "TypeScript",
+        "v": 75
+      },
+      {
+        "t": "Git/GitHub",
+        "v": 80
+      },
+      {
+        "t": "NodeJS",
+        "v": 70
+      }
+    ],
+    "tools": [
+      "Vite",
+      "Webpack",
+      "Figma",
+      "SASS",
+      "Styled‑Components",
+      "Tailwind",
+      "Axios",
+      "ESLint/Prettier"
+    ],
+    "list": [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Vite",
+      "Webpack",
+      "Node.js",
+      "Express",
+      "Tailwind CSS",
+      "Sass",
+      "Styled-Components",
+      "Git",
+      "GitHub",
+      "Axios",
+      "ESLint",
+      "Prettier",
+      "Framer Motion",
+      "React Hook Form",
+      "i18next",
+      "Zod",
+      "Figma"
+    ]
+  },
+  "contact": {
+    "title": "Contato",
+    "sub": "Vamos criar algo juntos? Entre em contato comigo!",
+    "name": "Seu nome",
+    "email": "Seu email",
+    "message": "Sua mensagem",
+    "send": "Enviar",
+    "note": "Envie para podermos falar sobre projetos!"
+  },
+  "footer": "© 2025 João Ferreira"
+}
