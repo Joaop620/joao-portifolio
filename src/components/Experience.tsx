@@ -1,34 +1,39 @@
-import { useRef } from 'react'
-import { useTranslation } from 'react-i18next'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useI18n } from '../i18n'
+import { experience } from '../data'
+import Reveal from './Reveal'
 
-export default function Experience(){
-  const { t } = useTranslation()
-  const secRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: secRef, offset: ['start end','end start'] })
-  const yTitle = useTransform(scrollYProgress, [0,1], [20,-20])
-  const oTitle = useTransform(scrollYProgress, [0,.2,.8,1], [.75,1,1,.9])
-
-  const items = t('experience.items', { returnObjects:true }) as any[]
-  const gridV = { hidden: {opacity:1}, show: {opacity:1, transition:{staggerChildren:.08, delayChildren:.05}} }
-  const itemV = { hidden:{opacity:0, y:12}, show:{opacity:1, y:0} }
-
+export default function Experience() {
+  const { t, lang } = useI18n()
   return (
-    <div ref={secRef}>
-      <motion.h2 style={{y: yTitle, opacity: oTitle}} className="section-title reveal">{t('experience.title')}</motion.h2>
-      <motion.div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 reveal-stagger mt-6"
-        variants={gridV} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
-        {items.map((xp,idx)=>(
-          <motion.article variants={itemV} key={idx} className="card">
-            <header className="flex items-center justify-between mb-1">
-              <h3>{xp.c}</h3><span className="opacity-80">{xp.p}</span>
-            </header>
-            <ul className="list-disc ml-5 space-y-1">
-              {xp.b.map((b:string,i:number)=>(<li key={i}>{b}</li>))}
-            </ul>
-          </motion.article>
-        ))}
-      </motion.div>
-    </div>
+    <section id="experience" className="relative py-24 sm:py-32">
+      <div className="container-max">
+        <Reveal>
+          <span className="eyebrow">{t('exp.eyebrow')}</span>
+          <h2 className="mt-3 font-display text-4xl sm:text-5xl">{t('exp.title')}</h2>
+        </Reveal>
+
+        <div className="relative mt-14 pl-8 sm:pl-0">
+          <div className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-gold/50 via-white/10 to-transparent sm:left-1/2" />
+          {experience.map((job, i) => (
+            <Reveal key={job.company} delay={i * 0.08}>
+              <div className={`relative mb-12 sm:w-1/2 ${i % 2 === 0 ? 'sm:pr-12 sm:text-right' : 'sm:ml-auto sm:pl-12'}`}>
+                <span className={`absolute top-2 h-3 w-3 rounded-full bg-gold shadow-gold -left-[2.05rem] sm:left-auto ${i % 2 === 0 ? 'sm:-right-[0.42rem]' : 'sm:-left-[0.42rem]'}`} />
+                <div className="rounded-2xl glass p-6 transition hover:border-gold/30">
+                  <div className={`mb-3 flex items-center gap-3 ${i % 2 === 0 ? 'sm:justify-end' : ''}`}>
+                    <h3 className="font-display text-xl text-white">{job.company}</h3>
+                    <span className="font-mono text-xs text-gold/70">{job.period}</span>
+                  </div>
+                  <ul className="space-y-2">
+                    {job.bullets[lang].map((b, j) => (
+                      <li key={j} className="text-sm leading-relaxed text-white/55">{b}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
   )
 }

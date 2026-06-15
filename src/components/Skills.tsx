@@ -1,87 +1,54 @@
-import { useRef } from 'react'
-import { useTranslation } from 'react-i18next'
-import { motion, useInView, useScroll, useTransform } from 'framer-motion'
-import {
-  SiHtml5, SiCss3, SiJavascript, SiTypescript,
-  SiReact, SiNextdotjs, SiVite, SiWebpack,
-  SiNodedotjs, SiExpress,
-  SiTailwindcss, SiSass, SiStyledcomponents,
-  SiGit, SiGithub,
-  SiAxios, SiEslint, SiPrettier,
-  SiFramer, SiReacthookform, SiI18Next, SiZod, SiFigma
-} from 'react-icons/si'
+import { motion } from 'framer-motion'
+import { useI18n } from '../i18n'
+import { skills, tools } from '../data'
+import Reveal from './Reveal'
 
-const ICONS: Record<string, any> = {
-  'HTML5': SiHtml5,
-  'CSS3': SiCss3,
-  'JavaScript': SiJavascript,
-  'TypeScript': SiTypescript,
-  'React': SiReact,
-  'Next.js': SiNextdotjs,
-  'Vite': SiVite,
-  'Webpack': SiWebpack,
-  'Node.js': SiNodedotjs,
-  'Express': SiExpress,
-  'Tailwind CSS': SiTailwindcss,
-  'Sass': SiSass,
-  'Styled-Components': SiStyledcomponents,
-  'Git': SiGit,
-  'GitHub': SiGithub,
-  'Axios': SiAxios,
-  'ESLint': SiEslint,
-  'Prettier': SiPrettier,
-  'Framer Motion': SiFramer,
-  'React Hook Form': SiReacthookform,
-  'i18next': SiI18Next,
-  'Zod': SiZod,
-  'Figma': SiFigma
-}
-
-export default function Skills(){
-  const { t } = useTranslation()
-
-  const secRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: secRef, offset: ['start end','end start'] })
-  const yTitle = useTransform(scrollYProgress, [0,1], [20,-20])
-  const oTitle = useTransform(scrollYProgress, [0,.2,.8,1], [.75,1,1,.9])
-
-  const gridRef = useRef<HTMLUListElement>(null)
-  const inView = useInView(gridRef, { amount: 0.15, once: true })
-
-  const names = (t('skills.list', { returnObjects:true }) as string[]) ?? []
-
+export default function Skills() {
+  const { t } = useI18n()
   return (
-    <section ref={secRef} id="skills" className="py-24 md:py-28">
-      <motion.h2 style={{ y:yTitle, opacity:oTitle }} className="text-3xl md:text-4xl font-extrabold text-center mb-12">
-        {t('skills.title')}
-      </motion.h2>
+    <section id="skills" className="relative py-24 sm:py-32">
+      <div className="container-max">
+        <Reveal>
+          <span className="eyebrow">{t('skills.eyebrow')}</span>
+          <h2 className="mt-3 font-display text-4xl sm:text-5xl">{t('skills.title')}</h2>
+        </Reveal>
 
-      <div className="container mx-auto px-6">
-        <motion.ul
-          ref={gridRef}
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 md:gap-7"
-        >
-          {names.map((name) => {
-            const Icon = ICONS[name] ?? SiReact
-            return (
-              <li
-                key={name}
-                className="group relative overflow-hidden rounded-2xl bg-black text-white ring-1 ring-white/10 p-4 flex flex-col items-center gap-2 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12">
-                  <Icon className="w-full h-full" aria-label={name} />
+        <div className="mt-12 grid gap-12 lg:grid-cols-2">
+          <div className="grid gap-6">
+            {skills.map((s, i) => (
+              <Reveal key={s.t} delay={i * 0.06}>
+                <div>
+                  <div className="mb-2 flex items-center justify-between">
+                    <span className="font-medium text-white/85">{s.t}</span>
+                    <span className="font-mono text-sm text-gold/70">{s.v}%</span>
+                  </div>
+                  <div className="h-2 overflow-hidden rounded-full bg-white/8">
+                    <motion.div initial={{ width: 0 }} whileInView={{ width: `${s.v}%` }}
+                      viewport={{ once: true }} transition={{ duration: 1.1, delay: 0.1, ease: 'easeOut' }}
+                      className="h-full rounded-full bg-gradient-to-r from-gold to-gold2" />
+                  </div>
                 </div>
-                <span className="text-sm md:text-base font-medium text-center">{name}</span>
+              </Reveal>
+            ))}
+          </div>
 
-                <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
-                     style={{ background: 'radial-gradient(120px 80px at 50% 0%, rgba(0,0,0,0.06), transparent 70%)' }} />
-              </li>
-            )
-          })}
-        </motion.ul>
+          <Reveal delay={0.1}>
+            <div className="rounded-3xl glass p-8">
+              <h3 className="mb-6 font-display text-xl text-white/80">{t('skills.tools')}</h3>
+              <div className="flex flex-wrap gap-3">
+                {tools.map((tool, i) => (
+                  <motion.span key={tool}
+                    initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }} transition={{ delay: i * 0.04 }}
+                    className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white/70 transition hover:border-gold/40 hover:text-gold"
+                    data-hover>
+                    {tool}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   )

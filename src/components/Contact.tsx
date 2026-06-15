@@ -1,67 +1,74 @@
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useTranslation } from 'react-i18next'
-import { useState, useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useState, type FormEvent } from 'react'
+import { useI18n } from '../i18n'
+import { links } from '../data'
+import Reveal from './Reveal'
 
-const schema = z.object({
-  name: z.string().min(2),
-  email: z.string().email(),
-  message: z.string().min(5),
-})
-type FormData = z.infer<typeof schema>
+// Replace XXXXXXXX with your Formspree form ID (https://formspree.io)
+const FORMSPREE = 'https://formspree.io/f/XXXXXXXX'
 
-export default function Contact(){
-  const { t } = useTranslation()
-  const [sent, setSent] = useState<string>('')
-  const { register, handleSubmit, reset, formState:{ errors, isSubmitting } } = useForm<FormData>({
-    resolver: zodResolver(schema)
-  })
+export default function Contact() {
+  const { t } = useI18n()
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error' | 'config'>('idle')
 
-  const onSubmit = async (data:FormData)=>{
-    const endpoint = (document.getElementById('formspree-endpoint') as HTMLInputElement)?.value || ''
-    if(!endpoint.startsWith('https://formspree.io/f/')){
-      setSent('⚠ Defina seu ID do Formspree (input oculto).'); return
-    }
-    const res = await fetch(endpoint, { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(data) })
-    if(res.ok){ setSent('✅ Mensagem enviada!'); reset() } else { setSent('❌ Erro ao enviar. Tente novamente.') }
-    setTimeout(()=>setSent(''), 3000)
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (!FORMSPREE.includes('/f/') || FORMSPREE.endsWith('XXXXXXXX')) { setStatus('config'); return }
+    setStatus('sending')
+    const data = new FormData(e.currentTarget)
+    try {
+      const res = await fetch(FORMSPREE, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+      if (res.ok) { setStatus('sent'); e.currentTarget.reset() } else setStatus('error')
+    } catch { setStatus('error') }
   }
 
-  const secRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: secRef, offset: ['start end','end start'] })
-  const yTitle = useTransform(scrollYProgress, [0,1], [20,-20])
-  const oTitle = useTransform(scrollYProgress, [0,.2,.8,1], [.75,1,1,.9])
-
   return (
-    <div ref={secRef}>
-      <motion.h2 style={{y: yTitle, opacity: oTitle}} className="section-title reveal">{t('contact.title')}</motion.h2>
-      <p className="section-sub reveal">{t('contact.sub')}</p>
+    <section id="contact" className="relative py-24 sm:py-32">
+      <div className="container-max">
+        <div className="relative overflow-hidden rounded-[2rem] glass p-8 sm:p-14">
+          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-gold/10 blur-3xl" />
+          <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-amber/10 blur-3xl" />
 
-      <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4 md:grid-cols-2 card mt-6">
-        <input id="formspree-endpoint" type="hidden" value="https://formspree.io/f/XXXXXXXX" />
-        <div className="md:col-span-1">
-          <label className="block mb-1">{t('contact.name')}</label>
-          <input {...register('name')} className="w-full rounded-lg border border-current bg-transparent px-3 py-2" />
-          {errors.name && <p className="text-red-400 text-sm mt-1">Nome inválido</p>}
+          <div className="relative grid gap-12 lg:grid-cols-[1fr,1.1fr]">
+            <Reveal>
+              <span className="eyebrow">{t('contact.eyebrow')}</span>
+              <h2 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">{t('contact.title')}</h2>
+              <p className="mt-5 max-w-md text-white/60">{t('contact.sub')}</p>
+
+              <div className="mt-8">
+                <p className="mb-3 text-sm text-white/40">{t('contact.or')}</p>
+                <a href={`mailto:${links.email}`} className="group flex items-center gap-2 font-display text-xl text-white transition hover:text-gold" data-hover>
+                  {links.email}
+                  <span className="transition group-hover:translate-x-1">→</span>
+                </a>
+                <div className="mt-5 flex gap-3">
+                  <a href={links.github} target="_blank" rel="noreferrer" className="pill glass hover:text-gold" data-hover>GitHub</a>
+                  <a href={links.behance} target="_blank" rel="noreferrer" className="pill glass hover:text-gold" data-hover>Behance</a>
+                  <a href={links.linkedin} target="_blank" rel="noreferrer" className="pill glass hover:text-gold" data-hover>LinkedIn</a>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.12}>
+              <form onSubmit={onSubmit} className="grid gap-4">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <input name="name" required placeholder={t('contact.name')}
+                    className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-white outline-none transition placeholder:text-white/35 focus:border-gold/50" />
+                  <input name="email" type="email" required placeholder={t('contact.email')}
+                    className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-white outline-none transition placeholder:text-white/35 focus:border-gold/50" />
+                </div>
+                <textarea name="message" required rows={5} placeholder={t('contact.message')}
+                  className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-white outline-none transition placeholder:text-white/35 focus:border-gold/50" />
+                <button type="submit" disabled={status === 'sending'} className="btn-gold justify-center disabled:opacity-60">
+                  {status === 'sending' ? '…' : t('contact.send')}
+                </button>
+                {status === 'sent' && <p className="text-sm text-gold">{t('contact.sent')}</p>}
+                {status === 'config' && <p className="text-sm text-amber">{t('contact.config')}</p>}
+                {status === 'error' && <p className="text-sm text-red-400">{t('contact.error')}</p>}
+              </form>
+            </Reveal>
+          </div>
         </div>
-        <div className="md:col-span-1">
-          <label className="block mb-1">{t('contact.email')}</label>
-          <input {...register('email')} className="w-full rounded-lg border border-current bg-transparent px-3 py-2" />
-          {errors.email && <p className="text-red-400 text-sm mt-1">Email inválido</p>}
-        </div>
-        <div className="md:col-span-2">
-          <label className="block mb-1">{t('contact.message')}</label>
-          <textarea rows={5} {...register('message')} className="w-full rounded-lg border border-current bg-transparent px-3 py-2" />
-          {errors.message && <p className="text-red-400 text-sm mt-1">Mensagem muito curta</p>}
-        </div>
-        <div className="md:col-span-2 flex items-center gap-3">
-          <button disabled={isSubmitting} className="btn btn-cv">{t('contact.send')}</button>
-          <span className="opacity-80 text-sm">{t('contact.note')}</span>
-        </div>
-        {sent && <div className="md:col-span-2">{sent}</div>}
-      </form>
-    </div>
+      </div>
+    </section>
   )
 }
