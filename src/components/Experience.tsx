@@ -5,7 +5,7 @@ import Reveal from './Reveal'
 export default function Experience() {
   const { t, lang } = useI18n()
   return (
-    <section id="experience" className="relative py-24 sm:py-32">
+    <section id="experience" className="relative py-20 sm:py-28">
       <div className="container-max">
         <Reveal>
           <span className="eyebrow">{t('exp.eyebrow')}</span>

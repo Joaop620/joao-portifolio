@@ -6,7 +6,7 @@ import Reveal from './Reveal'
 export default function Skills() {
   const { t } = useI18n()
   return (
-    <section id="skills" className="relative py-24 sm:py-32">
+    <section id="skills" className="relative py-20 sm:py-28">
       <div className="container-max">
         <Reveal>
           <span className="eyebrow">{t('skills.eyebrow')}</span>

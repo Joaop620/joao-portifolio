@@ -22,7 +22,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative py-24 sm:py-32">
+    <section id="contact" className="relative py-20 sm:py-28">
       <div className="container-max">
         <div className="relative overflow-hidden rounded-[2rem] glass p-8 sm:p-14">
           <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-gold/10 blur-3xl" />
