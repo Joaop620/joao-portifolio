@@ -1,6 +1,5 @@
 import { I18nProvider } from './i18n'
 import Background from './components/Background'
-import Cursor from './components/Cursor'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Stats from './components/Stats'
@@ -17,7 +16,6 @@ export default function App() {
     <I18nProvider>
       <div className="grain relative min-h-screen">
         <Background />
-        <Cursor />
         <div className="relative z-10">
           <Nav />
           <main>

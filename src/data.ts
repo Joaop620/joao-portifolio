@@ -103,13 +103,40 @@ export const projects: Project[] = [
   },
 ]
 
-export const skills = [
-  { t: 'HTML5 & CSS3', v: 95 },
-  { t: 'JavaScript', v: 90 },
-  { t: 'React', v: 85 },
-  { t: 'TypeScript', v: 78 },
-  { t: 'Git & GitHub', v: 82 },
-  { t: 'UI / Design', v: 80 },
+export interface Tech { name: string; icon: string }
+
+export const techStack: { group: Record<Lang, string>; items: Tech[] }[] = [
+  {
+    group: { pt: 'Front-end', en: 'Front-end' },
+    items: [
+      { name: 'React', icon: 'react' },
+      { name: 'TypeScript', icon: 'typescript' },
+      { name: 'JavaScript', icon: 'javascript' },
+      { name: 'HTML5', icon: 'html5' },
+      { name: 'CSS3', icon: 'css3' },
+      { name: 'Angular', icon: 'angular' },
+    ],
+  },
+  {
+    group: { pt: 'Estilo & Animação', en: 'Styling & Motion' },
+    items: [
+      { name: 'Tailwind CSS', icon: 'tailwindcss' },
+      { name: 'Sass', icon: 'sass' },
+      { name: 'Styled-Components', icon: 'styledcomponents' },
+      { name: 'Framer Motion', icon: 'framer' },
+    ],
+  },
+  {
+    group: { pt: 'Ferramentas', en: 'Tooling' },
+    items: [
+      { name: 'Node.js', icon: 'nodedotjs' },
+      { name: 'Vite', icon: 'vite' },
+      { name: 'Git', icon: 'git' },
+      { name: 'GitHub', icon: 'github' },
+      { name: 'Figma', icon: 'figma' },
+      { name: 'Vercel', icon: 'vercel' },
+    ],
+  },
 ]
 
 export const tools = [

@@ -18,13 +18,6 @@ body {
   color: #ece9e0;
   font-family: 'Sora', system-ui, sans-serif;
   overflow-x: hidden;
-  cursor: none;
-}
-
-/* hide custom cursor on touch */
-@media (hover: none) {
-  body { cursor: auto; }
-  .cursor-dot, .cursor-ring { display: none !important; }
 }
 
 ::selection { background: rgba(255, 215, 0, 0.25); color: #fff; }
@@ -85,18 +78,6 @@ body {
     @apply font-mono text-xs uppercase tracking-[0.35em] text-gold/80;
   }
 }
-
-/* custom cursor */
-.cursor-dot, .cursor-ring {
-  position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
-  border-radius: 50%; transform: translate(-50%, -50%);
-}
-.cursor-dot { width: 7px; height: 7px; background: var(--gold); }
-.cursor-ring {
-  width: 38px; height: 38px; border: 1px solid rgba(255, 215, 0, 0.55);
-  transition: width .25s ease, height .25s ease, background .25s ease, border-color .25s ease;
-}
-.cursor-ring.hover { width: 64px; height: 64px; background: rgba(255, 215, 0, 0.08); border-color: rgba(255,215,0,.8); }
 
 /* grain overlay */
 .grain::after {

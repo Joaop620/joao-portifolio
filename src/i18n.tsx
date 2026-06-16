@@ -53,6 +53,7 @@ const dict: Dict = {
 
   'skills.eyebrow': { pt: 'Capacidades', en: 'Capabilities' },
   'skills.title': { pt: 'Habilidades técnicas', en: 'Technical skills' },
+  'skills.sub': { pt: 'As tecnologias e ferramentas com que trabalho no dia a dia.', en: 'The technologies and tools I work with every day.' },
   'skills.tools': { pt: 'Ferramentas & tecnologias', en: 'Tools & technologies' },
 
   'exp.eyebrow': { pt: 'Percurso', en: 'Journey' },
