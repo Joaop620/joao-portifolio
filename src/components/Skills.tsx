@@ -1,53 +1,48 @@
 import { motion } from 'framer-motion'
 import { useI18n } from '../i18n'
-import { skills, tools } from '../data'
+import { techStack } from '../data'
+import { TechIcon } from '../icons'
 import Reveal from './Reveal'
 
 export default function Skills() {
-  const { t } = useI18n()
+  const { t, lang } = useI18n()
   return (
     <section id="skills" className="relative py-20 sm:py-28">
       <div className="container-max">
         <Reveal>
-          <span className="eyebrow">{t('skills.eyebrow')}</span>
-          <h2 className="mt-3 font-display text-4xl sm:text-5xl">{t('skills.title')}</h2>
+          <div className="mb-3 flex items-center gap-3">
+            <span className="eyebrow">{t('skills.eyebrow')}</span>
+            <span className="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent" />
+          </div>
+          <h2 className="font-display text-4xl sm:text-5xl">{t('skills.title')}</h2>
+          <p className="mt-3 max-w-lg text-white/55">{t('skills.sub')}</p>
         </Reveal>
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-2">
-          <div className="grid gap-6">
-            {skills.map((s, i) => (
-              <Reveal key={s.t} delay={i * 0.06}>
-                <div>
-                  <div className="mb-2 flex items-center justify-between">
-                    <span className="font-medium text-white/85">{s.t}</span>
-                    <span className="font-mono text-sm text-gold/70">{s.v}%</span>
-                  </div>
-                  <div className="h-2 overflow-hidden rounded-full bg-white/8">
-                    <motion.div initial={{ width: 0 }} whileInView={{ width: `${s.v}%` }}
-                      viewport={{ once: true }} transition={{ duration: 1.1, delay: 0.1, ease: 'easeOut' }}
-                      className="h-full rounded-full bg-gradient-to-r from-gold to-gold2" />
-                  </div>
+        <div className="mt-12 space-y-10">
+          {techStack.map((cat, ci) => (
+            <Reveal key={cat.group.en} delay={ci * 0.08}>
+              <div className="grid gap-5 sm:grid-cols-[180px,1fr] sm:items-start">
+                <div className="pt-1">
+                  <span className="font-mono text-xs uppercase tracking-widest text-gold/70">{String(ci + 1).padStart(2, '0')}</span>
+                  <h3 className="mt-1 font-display text-xl text-white/90">{cat.group[lang]}</h3>
                 </div>
-              </Reveal>
-            ))}
-          </div>
 
-          <Reveal delay={0.1}>
-            <div className="rounded-3xl glass p-8">
-              <h3 className="mb-6 font-display text-xl text-white/80">{t('skills.tools')}</h3>
-              <div className="flex flex-wrap gap-3">
-                {tools.map((tool, i) => (
-                  <motion.span key={tool}
-                    initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }} transition={{ delay: i * 0.04 }}
-                    className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white/70 transition hover:border-gold/40 hover:text-gold"
-                    data-hover>
-                    {tool}
-                  </motion.span>
-                ))}
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+                  {cat.items.map((tech, i) => (
+                    <motion.div key={tech.name}
+                      initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }} transition={{ delay: i * 0.04 }}
+                      className="group flex flex-col items-center gap-3 rounded-2xl glass px-3 py-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-gold">
+                      <span className="grid h-12 w-12 place-items-center rounded-xl bg-white/[0.04] text-white/70 transition-colors duration-300 group-hover:text-gold">
+                        <TechIcon name={tech.icon} className="h-6 w-6" />
+                      </span>
+                      <span className="text-sm font-medium text-white/75 transition-colors group-hover:text-white">{tech.name}</span>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
