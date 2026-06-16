@@ -10,6 +10,7 @@ export interface Project {
   language?: string
   year?: string
   cover?: string
+  accent?: string
   featured?: boolean
 }
 
@@ -25,8 +26,8 @@ export const projects: Project[] = [
     demo: 'https://www.behance.net/gallery/250335363/Social-Media-Jua-Agency-Carrossis',
     source: 'behance',
     year: '2025',
-    cover: 'https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/966d0f250335363.Y3JvcCwxMTUwLDkwMCwyMjUsMA.png',
-    featured: true,
+    cover: '/projects/jua.webp',
+    accent: '#a855f7',
   },
   {
     title: 'Cantinho da Agonia',
@@ -40,6 +41,8 @@ export const projects: Project[] = [
     source: 'github',
     language: 'JavaScript',
     year: '2025',
+    cover: '/projects/cantinho.webp',
+    accent: '#c9a227',
     featured: true,
   },
   {
@@ -54,6 +57,8 @@ export const projects: Project[] = [
     source: 'github',
     language: 'TypeScript',
     year: '2024',
+    cover: '/projects/lua.webp',
+    accent: '#ec4899',
   },
   {
     title: 'Organograma Familiar',
@@ -67,6 +72,8 @@ export const projects: Project[] = [
     source: 'github',
     language: 'JavaScript',
     year: '2024',
+    cover: '/projects/organo.webp',
+    accent: '#3b82f6',
   },
   {
     title: 'Calculadora Angular',
@@ -79,6 +86,7 @@ export const projects: Project[] = [
     source: 'github',
     language: 'TypeScript',
     year: '2024',
+    accent: '#dd0031',
   },
   {
     title: 'To-Do List',
@@ -91,6 +99,7 @@ export const projects: Project[] = [
     source: 'github',
     language: 'JavaScript',
     year: '2023',
+    accent: '#10b981',
   },
 ]
 

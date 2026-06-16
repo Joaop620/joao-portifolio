@@ -38,6 +38,7 @@ const dict: Dict = {
   'work.all': { pt: 'Todos', en: 'All' },
   'work.dev': { pt: 'Dev', en: 'Dev' },
   'work.design': { pt: 'Design', en: 'Design' },
+  'work.featured': { pt: 'Destaque', en: 'Featured' },
 
   'about.eyebrow': { pt: 'Sobre mim', en: 'About me' },
   'about.title': { pt: 'Olá, sou o João.', en: "Hi, I'm João." },

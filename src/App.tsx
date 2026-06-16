@@ -23,7 +23,7 @@ export default function App() {
           <main>
             <Hero />
             <Stats />
-            <div className="py-10" />
+            <div className="py-6" />
             <Marquee />
             <Work />
             <About />
