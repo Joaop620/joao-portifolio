@@ -2,8 +2,6 @@ import { I18nProvider } from './i18n'
 import Background from './components/Background'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
-import Stats from './components/Stats'
-import Marquee from './components/Marquee'
 import Work from './components/Work'
 import About from './components/About'
 import Skills from './components/Skills'
@@ -20,9 +18,6 @@ export default function App() {
           <Nav />
           <main>
             <Hero />
-            <Stats />
-            <div className="py-6" />
-            <Marquee />
             <Work />
             <About />
             <Skills />
