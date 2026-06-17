@@ -17,7 +17,6 @@ export default function Skills() {
           <h2 className="font-display text-4xl sm:text-5xl">{t('skills.title')}</h2>
           <p className="mt-3 max-w-lg text-white/55">{t('skills.sub')}</p>
         </Reveal>
-
         <div className="mt-12 space-y-10">
           {techStack.map((cat, ci) => (
             <Reveal key={cat.group.en} delay={ci * 0.08}>
@@ -26,13 +25,12 @@ export default function Skills() {
                   <span className="font-mono text-xs uppercase tracking-widest text-gold/70">{String(ci + 1).padStart(2, '0')}</span>
                   <h3 className="mt-1 font-display text-xl text-white/90">{cat.group[lang]}</h3>
                 </div>
-
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
                   {cat.items.map((tech, i) => (
                     <motion.div key={tech.name}
                       initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }} transition={{ delay: i * 0.04 }}
-                      className="group flex flex-col items-center gap-3 rounded-2xl glass px-3 py-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-gold">
+                      className="group flex flex-col items-center gap-3 rounded-2xl glass px-3 py-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-gold/40">
                       <span className="grid h-12 w-12 place-items-center rounded-xl bg-white/[0.04] text-white/70 transition-colors duration-300 group-hover:text-gold">
                         <TechIcon name={tech.icon} className="h-6 w-6" />
                       </span>
